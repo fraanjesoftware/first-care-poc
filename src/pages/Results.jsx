@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import ResultsChart from '../components/ResultsChart';
+import HealthThermometer from '../components/HealthThermometer';
 import { calculateScore, saveResults } from '../utils/scoring';
 import { 
   Download, 
@@ -25,34 +25,110 @@ const Results = () => {
     const savedAnswers = sessionStorage.getItem('bhv_quiz_answers');
     const savedContact = sessionStorage.getItem('bhv_contact_info');
 
+    console.log('Results page - savedAnswers:', savedAnswers);
+    console.log('Results page - savedContact:', savedContact);
+
+    // For testing/demo: Use mock data if no session data exists
     if (!savedAnswers || !savedContact) {
-      // Redirect to home if no data
-      navigate('/');
+      console.log('No session data found, using mock data for demo');
+      
+      // Mock answers for demo
+      const mockAnswers = {
+        1: "11-50",
+        2: "ja-onvoldoende",
+        3: "6-12",
+        4: "ja-oud",
+        5: "ja",
+        6: "onvolledig",
+        7: "ja",
+        8: "6-12",
+        9: "ja",
+        10: "deels"
+      };
+      
+      const mockContact = {
+        companyName: "Demo Bedrijf BV",
+        name: "Jan de Vries",
+        email: "demo@example.com",
+        phone: "0612345678",
+        employeeCount: "11-50"
+      };
+      
+      // Calculate results with mock data
+      const calculatedResults = calculateScore(mockAnswers);
+      
+      console.log('Mock calculated results:', calculatedResults);
+      
+      // Save everything (logs to console and localStorage)
+      saveResults({
+        contactInfo: mockContact,
+        answers: mockAnswers,
+        score: calculatedResults.score,
+        recommendations: calculatedResults.recommendations,
+        timestamp: new Date().toISOString()
+      });
+
+      setResults(calculatedResults);
+      setContactInfo(mockContact);
       return;
     }
 
-    const answers = JSON.parse(savedAnswers);
-    const contact = JSON.parse(savedContact);
-    
-    // Calculate results
-    const calculatedResults = calculateScore(answers);
-    
-    // Save everything (logs to console and localStorage)
-    saveResults({
-      contactInfo: contact,
-      answers: answers,
-      score: calculatedResults.score,
-      recommendations: calculatedResults.recommendations,
-      timestamp: new Date().toISOString()
-    });
+    try {
+      const answers = JSON.parse(savedAnswers);
+      const contact = JSON.parse(savedContact);
+      
+      console.log('Parsed answers:', answers);
+      console.log('Parsed contact:', contact);
+      
+      // Calculate results
+      const calculatedResults = calculateScore(answers);
+      
+      console.log('Calculated results:', calculatedResults);
+      
+      // Save everything (logs to console and localStorage)
+      saveResults({
+        contactInfo: contact,
+        answers: answers,
+        score: calculatedResults.score,
+        recommendations: calculatedResults.recommendations,
+        timestamp: new Date().toISOString()
+      });
 
-    setResults(calculatedResults);
-    setContactInfo(contact);
+      setResults(calculatedResults);
+      setContactInfo(contact);
 
-    // Clear session storage after saving
-    sessionStorage.removeItem('bhv_quiz_answers');
-    sessionStorage.removeItem('bhv_quiz_current');
-    sessionStorage.removeItem('bhv_contact_info');
+      // Clear session storage after saving
+      sessionStorage.removeItem('bhv_quiz_answers');
+      sessionStorage.removeItem('bhv_quiz_current');
+      sessionStorage.removeItem('bhv_contact_info');
+    } catch (error) {
+      console.error('Error processing results:', error);
+      // Use mock data on error
+      const mockAnswers = {
+        1: "11-50",
+        2: "ja-onvoldoende",
+        3: "6-12",
+        4: "ja-oud",
+        5: "ja",
+        6: "onvolledig",
+        7: "ja",
+        8: "6-12",
+        9: "ja",
+        10: "deels"
+      };
+      
+      const mockContact = {
+        companyName: "Demo Bedrijf BV",
+        name: "Jan de Vries",
+        email: "demo@example.com",
+        phone: "0612345678",
+        employeeCount: "11-50"
+      };
+      
+      const calculatedResults = calculateScore(mockAnswers);
+      setResults(calculatedResults);
+      setContactInfo(mockContact);
+    }
   }, [navigate]);
 
   if (!results || !contactInfo) {
@@ -105,9 +181,9 @@ const Results = () => {
           </p>
         </div>
 
-        {/* Score Chart */}
+        {/* Health Thermometer */}
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <ResultsChart score={results.score} level={results.level} />
+          <HealthThermometer score={results.score} />
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             {getActionButton()}

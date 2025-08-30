@@ -7,8 +7,12 @@ const Contact = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (contactInfo) => {
+    console.log('Contact form submitted with:', contactInfo);
+    
     // Save contact info to session storage
     sessionStorage.setItem('bhv_contact_info', JSON.stringify(contactInfo));
+    
+    console.log('Saved to session storage, navigating to results...');
     
     // Navigate to results page
     navigate('/resultaten');
