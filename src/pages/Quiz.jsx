@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '../components/ProgressBar';
-import QuestionCard from '../components/QuestionCard';
-import { questions, getTotalQuestions } from '../utils/questions';
+import EnhancedQuestionCard from '../components/EnhancedQuestionCard';
+import { comprehensiveQuestions, getTotalComprehensiveQuestions } from '../utils/comprehensiveQuestions';
 
 const Quiz = () => {
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
-  const totalQuestions = getTotalQuestions();
+  const totalQuestions = getTotalComprehensiveQuestions();
 
   // Load saved progress from session storage
   useEffect(() => {
@@ -32,7 +32,7 @@ const Quiz = () => {
   const handleAnswer = (value) => {
     setAnswers(prev => ({
       ...prev,
-      [questions[currentQuestion].id]: value
+      [comprehensiveQuestions[currentQuestion].id]: value
     }));
   };
 
@@ -51,17 +51,17 @@ const Quiz = () => {
     }
   };
 
-  const question = questions[currentQuestion];
+  const question = comprehensiveQuestions[currentQuestion];
   const currentAnswer = answers[question.id];
 
   return (
     <div className="min-h-[calc(100vh-200px)] bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <div className="mb-8">
           <ProgressBar current={currentQuestion + 1} total={totalQuestions} />
         </div>
         
-        <QuestionCard
+        <EnhancedQuestionCard
           question={question}
           answer={currentAnswer}
           onAnswer={handleAnswer}

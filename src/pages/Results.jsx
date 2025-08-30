@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import HealthThermometer from '../components/HealthThermometer';
-import { calculateScore, saveResults } from '../utils/scoring';
+import { calculateEnhancedScore, saveEnhancedResults } from '../utils/enhancedScoring';
 import { 
   Download, 
   Calendar, 
@@ -55,12 +55,12 @@ const Results = () => {
       };
       
       // Calculate results with mock data
-      const calculatedResults = calculateScore(mockAnswers);
+      const calculatedResults = calculateEnhancedScore(mockAnswers);
       
       console.log('Mock calculated results:', calculatedResults);
       
       // Save everything (logs to console and localStorage)
-      saveResults({
+      saveEnhancedResults({
         contactInfo: mockContact,
         answers: mockAnswers,
         score: calculatedResults.score,
@@ -81,12 +81,12 @@ const Results = () => {
       console.log('Parsed contact:', contact);
       
       // Calculate results
-      const calculatedResults = calculateScore(answers);
+      const calculatedResults = calculateEnhancedScore(answers);
       
       console.log('Calculated results:', calculatedResults);
       
       // Save everything (logs to console and localStorage)
-      saveResults({
+      saveEnhancedResults({
         contactInfo: contact,
         answers: answers,
         score: calculatedResults.score,
@@ -125,7 +125,7 @@ const Results = () => {
         employeeCount: "11-50"
       };
       
-      const calculatedResults = calculateScore(mockAnswers);
+      const calculatedResults = calculateEnhancedScore(mockAnswers);
       setResults(calculatedResults);
       setContactInfo(mockContact);
     }
