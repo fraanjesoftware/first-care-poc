@@ -4,11 +4,21 @@ import { Check } from 'lucide-react';
 const CheckboxQuestion = ({ question, answer = [], onAnswer }) => {
   const handleToggle = (value) => {
     const currentAnswers = Array.isArray(answer) ? answer : [];
-    const newAnswers = currentAnswers.includes(value)
-      ? currentAnswers.filter(v => v !== value)
-      : [...currentAnswers, value];
+    const noneOptions = ['geen', 'none'];
     
-    onAnswer(newAnswers);
+    // Check if clicking on a "none" option
+    if (noneOptions.includes(value)) {
+      // If selecting "none", clear all other selections
+      onAnswer(currentAnswers.includes(value) ? [] : [value]);
+    } else {
+      // If selecting a normal option, remove any "none" selections
+      const filteredAnswers = currentAnswers.filter(v => !noneOptions.includes(v));
+      const newAnswers = filteredAnswers.includes(value)
+        ? filteredAnswers.filter(v => v !== value)
+        : [...filteredAnswers, value];
+      
+      onAnswer(newAnswers);
+    }
   };
 
   return (

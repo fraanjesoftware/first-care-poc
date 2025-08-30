@@ -22,8 +22,8 @@ const EnhancedQuestionCard = ({ question, answer, onAnswer, onNext, onPrevious, 
         return question.rows.every(row => answer[row.value]);
       
       case 'ranking':
-        // Check if items have been arranged (answer should be an array)
-        return Array.isArray(answer) && answer.length === question.options.length;
+        // Check if at least one item is marked as active/relevant
+        return answer && answer.active && Array.isArray(answer.active) && answer.active.length > 0;
       
       default:
         return !!answer;

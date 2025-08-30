@@ -3,12 +3,27 @@ import { comprehensiveQuestions } from './comprehensiveQuestions';
 export const calculateEnhancedScore = (answers) => {
   let totalScore = 0;
   let totalWeight = 0;
-  const categoryScores = {};
+  // Initialize all categories to prevent NaN
+  const categoryScores = {
+    algemeen: { score: 0, maxScore: 0, questions: [], details: [] },
+    bhv: { score: 0, maxScore: 0, questions: [], details: [] },
+    middelen: { score: 0, maxScore: 0, questions: [], details: [] },
+    planning: { score: 0, maxScore: 0, questions: [], details: [] },
+    training: { score: 0, maxScore: 0, questions: [], details: [] },
+    compliance: { score: 0, maxScore: 0, questions: [], details: [] },
+    oefening: { score: 0, maxScore: 0, questions: [], details: [] },
+    veiligheid: { score: 0, maxScore: 0, questions: [], details: [] }
+  };
   const recommendations = [];
+
+  console.log('Starting enhanced score calculation with answers:', answers);
 
   comprehensiveQuestions.forEach(question => {
     const answer = answers[question.id];
-    if (!answer) return;
+    if (!answer) {
+      console.log(`No answer for question ${question.id}`);
+      return;
+    }
 
     let questionScore = 0;
     let maxQuestionScore = 0;
@@ -66,27 +81,36 @@ export const calculateEnhancedScore = (answers) => {
         break;
 
       case 'ranking':
-        // Ranking scoring - based on correct priority order
-        // Higher score if critical items are ranked higher
-        if (Array.isArray(answer) && answer.length > 0) {
+        // Ranking scoring - based on correct priority order and relevance selection
+        if (answer && answer.active && Array.isArray(answer.active) && answer.active.length > 0) {
           // Critical items that should be prioritized
           const criticalItems = ['fire', 'evacuation', 'firstaid'];
           let rankingScore = 0;
+          const activeItems = answer.active;
+          const inactiveItems = answer.inactive || [];
+          
+          // Bonus points for correctly identifying irrelevant items
+          const nonCriticalInactive = ['violence', 'technical'];
+          inactiveItems.forEach(item => {
+            if (nonCriticalInactive.includes(item)) {
+              rankingScore += 1; // Bonus for correctly marking non-critical as inactive
+            }
+          });
           
           // Check position of critical items
-          answer.forEach((item, index) => {
+          activeItems.forEach((item, index) => {
             if (criticalItems.includes(item)) {
               // Higher score for critical items in top positions
-              rankingScore += (answer.length - index) * 2;
+              rankingScore += (activeItems.length - index) * 2;
             } else {
               // Lower score for non-critical items
-              rankingScore += (answer.length - index) * 0.5;
+              rankingScore += (activeItems.length - index) * 0.5;
             }
           });
           
           // Normalize to 0-10 scale
-          const maxRankingScore = answer.length * 2 * 3; // max if all critical items at top
-          questionScore = (rankingScore / maxRankingScore) * 10 * question.weight;
+          const maxRankingScore = Math.max(activeItems.length * 2 * 3, 10); // max if all critical items at top
+          questionScore = Math.min((rankingScore / maxRankingScore) * 10, 10) * question.weight;
           maxQuestionScore = 10 * question.weight;
         }
         break;
@@ -98,16 +122,7 @@ export const calculateEnhancedScore = (answers) => {
     totalScore += questionScore;
     totalWeight += maxQuestionScore;
 
-    // Track category scores
-    if (!categoryScores[question.category]) {
-      categoryScores[question.category] = { 
-        score: 0, 
-        maxScore: 0, 
-        questions: [],
-        details: []
-      };
-    }
-    
+    // Track category scores (category already initialized above)
     categoryScores[question.category].score += questionScore;
     categoryScores[question.category].maxScore += maxQuestionScore;
     categoryScores[question.category].questions.push({

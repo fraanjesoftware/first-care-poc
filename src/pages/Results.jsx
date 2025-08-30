@@ -32,18 +32,37 @@ const Results = () => {
     if (!savedAnswers || !savedContact) {
       console.log('No session data found, using mock data for demo');
       
-      // Mock answers for demo
+      // Mock answers for demo - matching new question structure
       const mockAnswers = {
-        1: "11-50",
-        2: "ja-onvoldoende",
-        3: "6-12",
-        4: "ja-oud",
-        5: "ja",
-        6: "onvolledig",
-        7: "ja",
-        8: "6-12",
-        9: "ja",
-        10: "deels"
+        1: "kantoor", // sector
+        2: ["bhv-basis", "ehbo"], // BHV functions (checkbox)
+        3: { // Emergency equipment (matrix)
+          "extinguishers": "certified",
+          "aed": "present",
+          "firstaid": "certified",
+          "emergency-lighting": "present",
+          "alarm": "certified",
+          "evacuation-chairs": "absent"
+        },
+        4: { // Risk priority (ranking)
+          active: ["fire", "evacuation", "firstaid", "chemicals"],
+          inactive: ["violence", "technical"]
+        },
+        5: ["bhv-basic", "evacuation-drill", "firstaid"], // Training (checkbox)
+        6: { // Documentation (matrix)
+          "rie": "current",
+          "evacuation-plan": "outdated",
+          "emergency-plan": "current",
+          "bhv-plan": "in-progress",
+          "incident-register": "current",
+          "training-records": "current"
+        },
+        7: "annual", // Evacuation frequency
+        8: ["emergency-exits", "assembly-points", "emergency-contacts"], // Safety measures (checkbox)
+        9: "quick", // Response time
+        10: ["vca"], // Certifications (checkbox)
+        11: "medium", // Budget
+        12: "partial" // External support
       };
       
       const mockContact = {
@@ -103,18 +122,37 @@ const Results = () => {
       sessionStorage.removeItem('bhv_contact_info');
     } catch (error) {
       console.error('Error processing results:', error);
-      // Use mock data on error
+      // Use mock data on error - matching new question structure
       const mockAnswers = {
-        1: "11-50",
-        2: "ja-onvoldoende",
-        3: "6-12",
-        4: "ja-oud",
-        5: "ja",
-        6: "onvolledig",
-        7: "ja",
-        8: "6-12",
-        9: "ja",
-        10: "deels"
+        1: "kantoor",
+        2: ["bhv-basis", "ehbo"],
+        3: {
+          "extinguishers": "certified",
+          "aed": "present",
+          "firstaid": "certified",
+          "emergency-lighting": "present",
+          "alarm": "certified",
+          "evacuation-chairs": "absent"
+        },
+        4: {
+          active: ["fire", "evacuation", "firstaid", "chemicals"],
+          inactive: ["violence", "technical"]
+        },
+        5: ["bhv-basic", "evacuation-drill", "firstaid"],
+        6: {
+          "rie": "current",
+          "evacuation-plan": "outdated",
+          "emergency-plan": "current",
+          "bhv-plan": "in-progress",
+          "incident-register": "current",
+          "training-records": "current"
+        },
+        7: "annual",
+        8: ["emergency-exits", "assembly-points", "emergency-contacts"],
+        9: "quick",
+        10: ["vca"],
+        11: "medium",
+        12: "partial"
       };
       
       const mockContact = {
@@ -240,7 +278,7 @@ const Results = () => {
           
           <div className="space-y-4">
             {Object.entries(results.categoryScores).map(([category, data]) => {
-              const percentage = Math.round((data.score / data.maxScore) * 100);
+              const percentage = data.maxScore > 0 ? Math.round((data.score / data.maxScore) * 100) : 0;
               return (
                 <div key={category} className="border-b border-gray-200 pb-4 last:border-0">
                   <div className="flex justify-between items-center mb-2">
