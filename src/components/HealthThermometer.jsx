@@ -5,7 +5,7 @@ const HealthThermometer = ({ score }) => {
   
   const getHealthStatus = (score) => {
     if (score >= 80) return { text: 'Uitstekend', color: 'text-green-600' };
-    if (score >= 60) return { text: 'Goed', color: 'text-blue-600' };
+    if (score >= 60) return { text: 'Goed', color: 'text-[#379ADC]' };
     if (score >= 40) return { text: 'Voldoende', color: 'text-yellow-600' };
     if (score >= 20) return { text: 'Matig', color: 'text-orange-600' };
     return { text: 'Onvoldoende', color: 'text-red-600' };
@@ -13,7 +13,7 @@ const HealthThermometer = ({ score }) => {
 
   const getThermometerColor = (score) => {
     if (score >= 80) return 'from-green-300 to-green-500';
-    if (score >= 60) return 'from-blue-300 to-blue-500';
+    if (score >= 60) return 'from-[#379ADC50] to-[#379ADC]';
     if (score >= 40) return 'from-yellow-300 to-yellow-500';
     if (score >= 20) return 'from-orange-300 to-orange-500';
     return 'from-red-300 to-red-500';
@@ -24,7 +24,7 @@ const HealthThermometer = ({ score }) => {
 
   return (
     <div className="flex flex-col items-center space-y-6 p-8">
-      <h3 className="text-2xl font-bold text-gray-800">BHV Gezondheidsmeter</h3>
+      <h3 className="text-2xl font-bold text-gray-800">Veiligheid Gezondheidsmeter</h3>
       
       <div className="relative">
         <div className="relative w-32 h-80 mx-auto">
@@ -46,7 +46,7 @@ const HealthThermometer = ({ score }) => {
           
           <div className="absolute -left-20 top-0 h-full flex flex-col justify-between text-xs text-gray-600 font-medium">
             <span className="text-green-600">Uitstekend</span>
-            <span className="text-blue-600">Goed</span>
+            <span className="text-[#379ADC]">Goed</span>
             <span className="text-yellow-600">Voldoende</span>
             <span className="text-orange-600">Matig</span>
             <span className="text-red-600">Kritiek</span>
@@ -54,7 +54,6 @@ const HealthThermometer = ({ score }) => {
           </div>
         </div>
         
-        <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 w-40 h-40 bg-gradient-to-t from-gray-300 to-gray-200 rounded-full shadow-lg" />
       </div>
       
       <div className="text-center mt-16 space-y-2">
@@ -63,7 +62,7 @@ const HealthThermometer = ({ score }) => {
           {status.text}
         </div>
         <p className="text-gray-600 mt-4 max-w-md">
-          Uw BHV-veiligheid scoort <span className="font-semibold">{percentage}%</span>. 
+          Uw veiligheid scoort <span className="font-semibold">{percentage}%</span>. 
           {percentage < 60 && ' Er zijn verbeteringen nodig om de veiligheid op peil te brengen.'}
           {percentage >= 60 && percentage < 80 && ' U bent op de goede weg, maar er is ruimte voor verbetering.'}
           {percentage >= 80 && ' Uitstekend werk! Blijf deze hoge standaard handhaven.'}
