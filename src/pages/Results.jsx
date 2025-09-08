@@ -207,7 +207,7 @@ const Results = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-200px)] bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-[calc(100vh-200px)] ">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         {/* Header */}
         <div className="text-center mb-8">

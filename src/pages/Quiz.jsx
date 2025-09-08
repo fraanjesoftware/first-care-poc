@@ -55,7 +55,7 @@ const Quiz = () => {
   const currentAnswer = answers[question.id];
 
   return (
-    <div className="min-h-[calc(100vh-200px)] bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-[calc(100vh-200px)] ">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <div className="mb-8">
           <ProgressBar current={currentQuestion + 1} total={totalQuestions} />

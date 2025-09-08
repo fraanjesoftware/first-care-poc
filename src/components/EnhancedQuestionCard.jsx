@@ -106,7 +106,7 @@ const EnhancedQuestionCard = ({ question, answer, onAnswer, onNext, onPrevious, 
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 md:p-8 animate-fade-in">
+    <div className="bg-white rounded-lg p-6 md:p-8 animate-fade-in">
       <div className="mb-6">
         {renderQuestion()}
       </div>

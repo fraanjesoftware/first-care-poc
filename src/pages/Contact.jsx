@@ -19,7 +19,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-200px)] bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-[calc(100vh-200px)] ">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style={{ backgroundColor: '#E52C9520' }}>

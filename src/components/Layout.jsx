@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#F1F4F6' }}>
       {/* Top Header in margin area */}
-      <header className="h-8" style={{ backgroundColor: '#F1F4F6' }}>
+      <header className="h-12" style={{ backgroundColor: '#F1F4F6' }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <span className="text-sm text-black">Wij staan voor je klaar!</span>
@@ -24,7 +24,7 @@ const Layout = () => {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto bg-white min-h-screen shadow-sm">
+      <div className="max-w-7xl mx-auto bg-white min-h-screen ">
         {/* Logo in main container */}
         <div className="px-6 sm:px-6 lg:px-24 pt-4">
           <Link to="/" className="inline-flex items-center">
