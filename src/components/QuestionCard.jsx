@@ -19,14 +19,14 @@ const QuestionCard = ({ question, answer, onAnswer, onNext, onPrevious, isFirst,
             onClick={() => handleOptionClick(option.value)}
             className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${
               answer === option.value
-                ? 'border-[#0066CC] bg-blue-50 shadow-sm'
+                ? 'border-[#379ADC] bg-blue-50 shadow-sm'
                 : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
             }`}
           >
             <div className="flex items-center">
               <div className={`w-5 h-5 rounded-full border-2 mr-3 flex items-center justify-center ${
                 answer === option.value
-                  ? 'border-[#0066CC] bg-[#0066CC]'
+                  ? 'border-[#379ADC] bg-[#379ADC]'
                   : 'border-gray-400'
               }`}>
                 {answer === option.value && (
@@ -62,7 +62,7 @@ const QuestionCard = ({ question, answer, onAnswer, onNext, onPrevious, isFirst,
           disabled={!answer}
           className={`flex items-center px-6 py-2 rounded-lg font-medium transition-all ${
             answer
-              ? 'bg-[#0066CC] text-white hover:bg-[#0052A3]'
+              ? 'bg-[#379ADC] text-white hover:bg-[#2B7AC4]'
               : 'bg-gray-200 text-gray-400 cursor-not-allowed'
           }`}
         >

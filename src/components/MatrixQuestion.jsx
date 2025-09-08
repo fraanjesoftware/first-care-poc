@@ -54,7 +54,7 @@ const MatrixQuestion = ({ question, answer = {}, onAnswer }) => {
                       <div className={`
                         w-5 h-5 rounded-full border-2 transition-all
                         ${answer[row.value] === col.value
-                          ? 'border-blue-500 bg-blue-500 ring-2 ring-blue-200'
+                          ? 'border-[#379ADC] bg-[#379ADC] ring-2 ring-blue-200'
                           : 'border-gray-300 hover:border-gray-400 bg-white'
                         }
                       `}>

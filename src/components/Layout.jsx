@@ -7,7 +7,7 @@ const Layout = () => {
     <div className="min-h-screen" style={{ backgroundColor: '#F1F4F6' }}>
       {/* Top Header in margin area */}
       <header className="h-8" style={{ backgroundColor: '#F1F4F6' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <span className="text-sm text-black">Wij staan voor je klaar!</span>
             <a href="tel:0881234567" className="flex items-center">
@@ -16,22 +16,22 @@ const Layout = () => {
             </a>
           </div>
           <nav className="flex items-center space-x-6">
-            <a href="#" className="text-sm text-gray-600 hover:text-[#0066CC] transition-colors">Leeromgeving</a>
-            <a href="#" className="text-sm text-gray-600 hover:text-[#0066CC] transition-colors">Klantlogin</a>
-            <a href="#" className="text-sm text-gray-600 hover:text-[#0066CC] transition-colors">Over ons</a>
-            <a href="#" className="text-sm text-gray-600 hover:text-[#0066CC] transition-colors">Contact</a>
+            <a href="#" className="text-sm text-gray-600 hover:text-[#379ADC] transition-colors">Leeromgeving</a>
+            <a href="#" className="text-sm text-gray-600 hover:text-[#379ADC] transition-colors">Klantlogin</a>
+            <a href="#" className="text-sm text-gray-600 hover:text-[#379ADC] transition-colors">Over ons</a>
+            <a href="#" className="text-sm text-gray-600 hover:text-[#379ADC] transition-colors">Contact</a>
           </nav>
         </div>
       </header>
 
       <div className="max-w-7xl mx-auto bg-white min-h-screen shadow-sm">
         {/* Logo in main container */}
-        <div className="px-4 sm:px-6 lg:px-8 pt-4">
+        <div className="px-6 sm:px-6 lg:px-24 pt-4">
           <Link to="/" className="inline-flex items-center">
             <img 
               src="/first-care-logo.svg" 
               alt="First Care" 
-              className="h-10"
+              className="h-14"
             />
           </Link>
         </div>

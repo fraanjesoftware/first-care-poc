@@ -85,7 +85,7 @@ const LeadForm = ({ onSubmit }) => {
             name="companyName"
             value={formData.companyName}
             onChange={handleChange}
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#0066CC] focus:border-[#0066CC] outline-none transition-colors ${
+            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#379ADC] focus:border-[#379ADC] outline-none transition-colors ${
               errors.companyName ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="Uw bedrijfsnaam"
@@ -108,7 +108,7 @@ const LeadForm = ({ onSubmit }) => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#0066CC] focus:border-[#0066CC] outline-none transition-colors ${
+            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#379ADC] focus:border-[#379ADC] outline-none transition-colors ${
               errors.name ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="Voor- en achternaam"
@@ -131,7 +131,7 @@ const LeadForm = ({ onSubmit }) => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#0066CC] focus:border-[#0066CC] outline-none transition-colors ${
+            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#379ADC] focus:border-[#379ADC] outline-none transition-colors ${
               errors.email ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="naam@bedrijf.nl"
@@ -154,7 +154,7 @@ const LeadForm = ({ onSubmit }) => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0066CC] focus:border-[#0066CC] outline-none transition-colors"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#379ADC] focus:border-[#379ADC] outline-none transition-colors"
             placeholder="06-12345678"
           />
         </div>
@@ -168,7 +168,7 @@ const LeadForm = ({ onSubmit }) => {
             name="employeeCount"
             value={formData.employeeCount}
             onChange={handleChange}
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#0066CC] focus:border-[#0066CC] outline-none transition-colors ${
+            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#379ADC] focus:border-[#379ADC] outline-none transition-colors ${
               errors.employeeCount ? 'border-red-500' : 'border-gray-300'
             }`}
           >
@@ -193,10 +193,10 @@ const LeadForm = ({ onSubmit }) => {
               name="privacy"
               checked={formData.privacy}
               onChange={handleChange}
-              className="mt-1 mr-3 h-4 w-4 text-[#0066CC] border-gray-300 rounded focus:ring-[#0066CC]"
+              className="mt-1 mr-3 h-4 w-4 text-[#379ADC] border-gray-300 rounded focus:ring-[#379ADC]"
             />
             <span className="text-sm text-gray-600">
-              Ik ga akkoord met het <a href="#" className="text-[#0066CC] hover:underline">privacybeleid</a> en 
+              Ik ga akkoord met het <a href="#" className="text-[#379ADC] hover:underline">privacybeleid</a> en 
               geef toestemming om contact met mij op te nemen over de resultaten van deze scan. *
             </span>
           </label>
@@ -210,7 +210,7 @@ const LeadForm = ({ onSubmit }) => {
         
         <button
           type="submit"
-          className="w-full bg-[#0066CC] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#0052A3] transition-colors duration-200"
+          className="w-full bg-[#379ADC] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#2B7AC4] transition-colors duration-200"
         >
           Bekijk uw resultaten
         </button>

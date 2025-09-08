@@ -173,7 +173,7 @@ const Results = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0066CC] mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#379ADC] mx-auto"></div>
           <p className="mt-4 text-gray-600">Resultaten worden berekend...</p>
         </div>
       </div>
@@ -225,7 +225,7 @@ const Results = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             {getActionButton()}
-            <button className="flex items-center border-2 border-[#0066CC] text-[#0066CC] hover:bg-[#0066CC] hover:text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+            <button className="flex items-center border-2 border-[#379ADC] text-[#379ADC] hover:bg-[#379ADC] hover:text-white font-semibold py-3 px-6 rounded-lg transition-colors">
               <Phone className="h-5 w-5 mr-2" />
               Bel direct: 088 - 123 45 67
             </button>
@@ -303,7 +303,7 @@ const Results = () => {
         </div>
 
         {/* Next Steps */}
-        <div className="bg-gradient-to-r from-[#0066CC] to-[#0052A3] rounded-lg shadow-lg p-8 text-white">
+        <div className="bg-gradient-to-r from-[#379ADC] to-[#2B7AC4] rounded-lg shadow-lg p-8 text-white">
           <h2 className="text-2xl font-bold mb-4">Uw volgende stappen</h2>
           
           <div className="grid md:grid-cols-3 gap-6">
@@ -345,7 +345,7 @@ const Results = () => {
           </div>
           
           <div className="mt-6 flex flex-col sm:flex-row gap-4">
-            <button className="bg-white text-[#0066CC] hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition-colors">
+            <button className="bg-white text-[#379ADC] hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition-colors">
               Download PDF rapport
             </button>
             <button className="bg-white/20 border-2 border-white text-white hover:bg-white/30 font-semibold py-3 px-6 rounded-lg transition-colors">
@@ -361,14 +361,14 @@ const Results = () => {
           </p>
           <p className="text-sm text-gray-500">
             Heeft u direct vragen? Bel ons op <strong>088 - 123 45 67</strong> of mail naar{' '}
-            <a href="mailto:info@firstcare.nl" className="text-[#0066CC] hover:underline">
+            <a href="mailto:info@firstcare.nl" className="text-[#379ADC] hover:underline">
               info@firstcare.nl
             </a>
           </p>
           
           <Link 
             to="/"
-            className="inline-flex items-center text-[#0066CC] hover:text-[#0052A3] font-medium mt-6"
+            className="inline-flex items-center text-[#379ADC] hover:text-[#2B7AC4] font-medium mt-6"
           >
             <ChevronRight className="h-4 w-4 mr-1 rotate-180" />
             Nieuwe scan starten

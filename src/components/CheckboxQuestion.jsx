@@ -38,7 +38,7 @@ const CheckboxQuestion = ({ question, answer = [], onAnswer }) => {
               className={`
                 flex items-start p-4 rounded-lg border-2 cursor-pointer transition-all
                 ${isChecked 
-                  ? 'border-blue-500 bg-blue-50' 
+                  ? 'border-[#379ADC] bg-blue-50' 
                   : 'border-gray-200 hover:border-gray-300 bg-white'
                 }
               `}
@@ -53,7 +53,7 @@ const CheckboxQuestion = ({ question, answer = [], onAnswer }) => {
                 <div className={`
                   w-5 h-5 rounded border-2 flex items-center justify-center mr-3 transition-all
                   ${isChecked 
-                    ? 'border-blue-500 bg-blue-500' 
+                    ? 'border-[#379ADC] bg-[#379ADC]' 
                     : 'border-gray-300 bg-white'
                   }
                 `}>
